@@ -54,8 +54,16 @@ def _media_ponderada(valores, frequencias):
     escala, n = max(map(abs, valores)), sum(frequencias)
     if escala == 0:
         return 0.0
-    soma = math.fsum((v / escala) * (f / n) for v, f in zip(valores, frequencias))
-    return max(-1.0, min(1.0, soma)) * escala
+    soma, compensacao = 0.0, 0.0
+    for valor, frequencia in zip(valores, frequencias):
+        termo = (valor / escala) * (frequencia / n)
+        parcial = soma + termo
+        if abs(soma) >= abs(termo):
+            compensacao += (soma - parcial) + termo
+        else:
+            compensacao += (termo - parcial) + soma
+        soma = parcial
+    return max(-1.0, min(1.0, soma + compensacao)) * escala
 
 def analisar_nao_agrupados(dados):
     import statistics

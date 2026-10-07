@@ -79,6 +79,16 @@ O arquivo deve ser UTF-8. O programa detecta vírgula, ponto e vírgula ou tabul
 
 Cada entrada válida apresenta as três partes. Nas fórmulas, `n` é o total de observações, `fi` a frequência absoluta e `Fi` a frequência acumulada.
 
+### Uso de bibliotecas por etapa
+
+| Etapa | Restrição do enunciado e implementação |
+| --- | --- |
+| Parte 1 | Exclusivamente `statistics` para calcular média, mediana e moda, com chamadas diretas a `mean`, `median` e `mode`. |
+| Parte 2 | Algoritmos próprios que calculam as medidas estritamente pela tabela de frequências gerada. |
+| Parte 3 | Fórmulas clássicas implementadas manualmente; proibidas bibliotecas estatísticas ou de análise de dados, como `statistics`, Pandas, NumPy e SciPy. |
+
+Os somatórios ponderados das Partes 2 e 3 são implementados manualmente. `math` fornece `log10`/`ceil` para Sturges e verificações numéricas; não calcula as medidas descritivas. `csv`, `io` e `pathlib` cuidam da leitura; `argparse` e `sys`, da CLI; `collections` e `types` apenas organizam os dados e resultados. Esses módulos de apoio não são bibliotecas estatísticas, e o enunciado não os proíbe.
+
 **Parte 1 — dados não agrupados:** média, mediana e moda calculadas diretamente por `statistics.mean`, `statistics.median` e `statistics.mode`, conforme a restrição do trabalho. Em empate, `statistics.mode` retorna o primeiro dos valores mais frequentes encontrado na entrada.
 
 **Parte 2 — agrupamento sem intervalos:** tabela de valores únicos `xi` em ordem crescente, com `fi` e `Fi`. Os cálculos usam apenas a tabela:
