@@ -184,8 +184,8 @@ def grouped_mode(classes):
     return modes, observation
 
 def summary(mean, median, modes):
-    text = ", ".join(f"{value:.12g}" for value in modes) or "não definida"
-    print(f"Média: {mean:.12g} | Mediana: {median:.12g} | Moda(s): {text}")
+    text = ", ".join(f"{value:.2f}" for value in modes) or "não definida"
+    print(f"Média: {mean:.2f} | Mediana: {median:.2f} | Moda(s): {text}")
 
 def print_results(values):
     values = validate_values(values)
@@ -196,23 +196,23 @@ def print_results(values):
     print(f"Dados carregados com sucesso! (n = {n} elementos)")
     print("\nPARTE 1: DADOS NÃO AGRUPADOS (statistics)")
     for name, key in (("Média", "mean"), ("Mediana", "median"), ("Moda", "mode")):
-        print(f"{name}: {stats[key]:.12g}")
+        print(f"{name}: {stats[key]:.2f}")
     mean, median, modes = discrete_stats(rows)
     if len(modes) > 1:
         print("statistics.mode retorna a primeira moda encontrada em caso de empate.")
     print("\nPARTE 2: FREQUÊNCIA DISCRETA (cálculo pela tabela)")
     print(f"{'Valor (xi)':>16} | {'fi':>8} | {'Fi':>8}")
     for value, fi, Fi in rows:
-        print(f"{value!r:>16} | {fi:>8} | {Fi:>8}")
+        print(f"{value:16.2f} | {fi:>8} | {Fi:>8}")
     summary(mean, median, modes)
     if len(modes) == len(rows) > 1 and rows[0][1] == 1:
         print("Todos os valores ocorrem uma vez: não há moda predominante.")
     print("\nPARTE 3: FREQUÊNCIA COM INTERVALOS (Python nativo)")
     print(f"Sturges: k = {math.ceil(1 + 3.322 * math.log10(n))} | Classes efetivas = {len(classes)}")
-    print(f"Amplitude total = {max(values) - min(values):.12g} | h = {classes[0]['upper'] - classes[0]['lower']:.12g}")
+    print(f"Amplitude total = {max(values) - min(values):.2f} | h = {classes[0]['upper'] - classes[0]['lower']:.2f}")
     print(f"{'Intervalo de Classe':>35} | {'fi':>6} | {'Fi':>6}")
     for i, c in enumerate(classes):
-        interval = f"[{c['lower']!r} - {c['upper']!r}{']' if i == len(classes) - 1 else ')'}"
+        interval = f"[{c['lower']:.2f} - {c['upper']:.2f}{']' if i == len(classes) - 1 else ')'}"
         print(f"{interval:>35} | {c['fi']:>6} | {c['Fi']:>6}")
     modes, observation = grouped_mode(classes)
     print("Medidas agrupadas são estimativas; moda pelo método de Czuber:")
@@ -221,7 +221,7 @@ def print_results(values):
         print(observation)
     for name, positions in (("Quartis", (("Q1", .25), ("Q3", .75))), ("Decis", (("D2", .2), ("D7", .7))),
                             ("Percentis", (("P15", .15), ("P22", .22), ("P63", .63), ("P70", .7)))):
-        print(name + ": " + " | ".join(f"{label} = {quantile_grouped(classes, n * p):.12g}" for label, p in positions))
+        print(name + ": " + " | ".join(f"{label} = {quantile_grouped(classes, n * p):.2f}" for label, p in positions))
 
 def menu():
     while True:
