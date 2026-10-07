@@ -1,66 +1,78 @@
-# Publicação no GitHub
+# Repositório no GitHub
 
-O nome sugerido para o repositório é `estatistica-python`. A publicação usa a conta do integrante responsável; este documento não pressupõe que o repositório já exista.
+O repositório do trabalho foi criado na conta **Morenin888**:
 
-## Opção 1 — pelo navegador
+<https://github.com/Morenin888/estatistica-python>
 
-1. Entre na sua conta em <https://github.com> e abra <https://github.com/new>.
-2. Selecione sua própria conta como proprietário e use o nome `estatistica-python`. Se esse nome já existir na conta, confirme se aquele é o repositório destinado a este trabalho antes de adicionar arquivos; escolha outro nome se for um projeto diferente.
-3. Crie inicialmente um repositório privado. Não marque as opções para gerar README, `.gitignore` ou licença: esses arquivos do projeto serão enviados junto com o código.
-4. Abra **Add file → Upload files**. Arraste o conteúdo da pasta `estatistica-python`, mantendo as pastas `estatistica`, `dados`, `docs`, `tests` e `.github`. Envie também `main.py`, `README.md` e `.gitignore`. Arquivos iniciados por ponto podem estar ocultos no gerenciador de arquivos; habilite sua exibição para incluir `.github` e `.gitignore`. Não envie a pasta local `.git`, se houver, nem ambientes virtuais ou caches.
-5. Confirme os arquivos e registre o envio com uma mensagem como `Adiciona analisador estatístico, exemplos e relatório`.
-6. Confira que o README aparece na página inicial, que `docs/relatorio.pdf` abre e que a aba **Actions** apresenta a execução dos testes. A primeira execução pode demorar alguns minutos.
-7. Se o professor exigir acesso público, use **Settings → General → Danger Zone → Change repository visibility** para tornar o repositório público. Se aceitar privado, conceda acesso ao professor pelo usuário GitHub que ele informar, em **Settings → Collaborators**.
-8. Entregue a URL copiada da página do repositório e o PDF solicitado. Os quatro integrantes estão identificados no README e no relatório.
+Ele é **privado**. O estado da publicação dos arquivos e da verificação do GitHub Actions está registrado no [checklist](CHECKLIST.md). A criação do repositório não confirma, por si só, o envio dos arquivos ou a submissão ao professor.
 
-Não inclua senhas ou tokens em arquivos, commits ou mensagens. A autenticação deve acontecer no próprio GitHub ou no fluxo oficial do GitHub CLI.
+## Baixar e executar
 
-## Opção 2 — Git e GitHub CLI no seu computador
+É necessário Python 3.10 ou superior. A aplicação não exige pacotes externos.
 
-Requisitos: Git e [GitHub CLI](https://cli.github.com/) instalados. Abra um terminal dentro da pasta do projeto. Autentique pela janela do navegador e confirme qual conta está ativa:
+Para acessar um repositório privado, autentique uma conta que tenha acesso a ele. Com [GitHub CLI](https://cli.github.com/) e Git instalados:
 
 ```bash
 gh auth login --hostname github.com --git-protocol https --web
 gh auth status
-git status
+gh repo clone Morenin888/estatistica-python
+cd estatistica-python
+python main.py
 ```
 
-Se `git status` indicar que a pasta ainda não é um repositório, inicialize:
+Se o Git já estiver autenticado, também é possível clonar diretamente:
 
 ```bash
-git init -b main
+git clone https://github.com/Morenin888/estatistica-python.git
+cd estatistica-python
 ```
 
-Use a sua identidade real de autor, caso o Git solicite nome e e-mail. Em seguida, revise o conteúdo e crie o commit:
+Para executar um exemplo e conferir os testes, dentro da pasta do projeto:
 
 ```bash
-git add .
-git diff --cached --stat
-git status
-git commit -m "Adiciona analisador estatístico, exemplos e relatório"
+python main.py --csv dados/exemplo.csv
+python -m unittest discover -s tests -v
 ```
 
-Antes de criar o repositório, confirme no navegador que `estatistica-python` ainda não existe na conta autenticada. O comando abaixo cria um repositório privado nessa conta e envia o projeto:
+Os demais comandos estão no [README](../README.md). O relatório fica em [docs/relatorio.pdf](relatorio.pdf). Pelo navegador, também é possível usar **Code → Download ZIP** na página do repositório, quando os arquivos estiverem publicados e sua conta tiver acesso.
 
-```bash
-gh repo create estatistica-python --private --source=. --remote=origin --push
-gh repo view --web
-```
+## Atualizar o projeto
 
-Se a pasta já possuir um remoto `origin`, confira-o antes de publicar:
+Use um clone do repositório existente para preservar seu histórico. Antes de editar, confira o remoto e sincronize a cópia local:
 
 ```bash
 git remote -v
+git status
+git pull --ff-only
 ```
 
-Se o repositório de destino já existir, use o histórico dele como base e adicione os arquivos do projeto em um clone, após revisar os arquivos existentes. Não execute `git push --force`, não apague o histórico e não substitua um repositório de outro trabalho. Registre e envie as mudanças normalmente com `git add`, `git commit` e `git push`.
+Após realizar as alterações, execute os testes e revise o que será enviado:
 
-## Conferência da entrega
+```bash
+python -m unittest discover -s tests -v
+git diff
+git add .
+git diff --cached --stat
+git status
+git commit -m "Atualiza analisador estatístico e documentação"
+git push
+```
 
-- README e nomes dos integrantes conferidos.
-- Código-fonte, exemplos CSV, testes e relatório PDF disponíveis.
-- Testes locais aprovados e execução do GitHub Actions verificada.
-- Acesso do professor definido conforme o formato de entrega.
-- URL real do repositório copiada para a submissão.
+O remoto deve apontar para `Morenin888/estatistica-python`. Caso haja mudanças locais ou conflitos, revise-os antes de sincronizar; não apague o histórico nem execute `git push --force`. Use sua identidade real de autor se o Git solicitar nome e e-mail. A lista de integrantes identifica o grupo e não atribui contas individuais, funções ou participação histórica nos commits.
 
-Os commits devem refletir quem realizou cada alteração. A lista de integrantes identifica o grupo e não atribui participação histórica ou contas GitHub individuais.
+Para uma edição pequena pelo navegador, abra o arquivo no repositório e use o botão de edição. Para adicionar arquivos, use **Add file → Upload files**, preservando as pastas do projeto. Confira sempre o conteúdo antes de registrar o commit.
+
+## Conferir a publicação
+
+1. Abra <https://github.com/Morenin888/estatistica-python> com uma conta autorizada.
+2. Confira se o README aparece e se código, exemplos CSV, testes e `docs/relatorio.pdf` estão disponíveis.
+3. Abra a aba **Actions** e confira o resultado do workflow **Testes** para o commit publicado. Ele executa a suíte e um exemplo CSV em Python 3.10, 3.12 e 3.13.
+4. Marque as etapas correspondentes no [checklist](CHECKLIST.md) somente depois da confirmação.
+
+## Acesso do professor e submissão
+
+Como o repositório é privado, o professor precisa receber acesso. Se ele aceitar repositórios privados, solicite seu nome de usuário GitHub e conceda acesso em **Settings → Collaborators**. A aceitação do convite também deve ser conferida.
+
+Se a orientação da disciplina exigir repositório público, o proprietário pode alterar a visibilidade em **Settings → General → Danger Zone → Change repository visibility**. A criação deste projeto privado não confirma essa alteração nem o acesso do professor.
+
+Entregue a URL <https://github.com/Morenin888/estatistica-python> e o arquivo `docs/relatorio.pdf` pelo canal indicado pelo professor, até **10 de outubro de 2026**. Confirme o envio antes de marcar a submissão no checklist.

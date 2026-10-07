@@ -2,6 +2,8 @@
 
 Trabalho de **Probabilidade e Estatística**, com entrega de código-fonte no GitHub e relatório em PDF. A aplicação de linha de comando lê números digitados ou um arquivo CSV e apresenta as três análises exigidas pelo enunciado.
 
+Repositório do grupo: [Morenin888/estatistica-python](https://github.com/Morenin888/estatistica-python).
+
 ## Integrantes em ordem alfabética
 
 1. Gabriel Chagas
@@ -174,7 +176,7 @@ Os testes conferem resultados matemáticos, casos de empate e dados constantes, 
 
 - [Relatório técnico em PDF](docs/relatorio.pdf) e [fonte editável](docs/relatorio.md).
 - [Checklist dos requisitos do enunciado](docs/CHECKLIST.md).
-- [Instruções para publicar na sua conta GitHub](docs/GITHUB.md).
+- [Acesso ao repositório, execução e atualizações no GitHub](docs/GITHUB.md).
 
 Referência da Parte 1: [documentação oficial do módulo `statistics`](https://docs.python.org/3/library/statistics.html).
 

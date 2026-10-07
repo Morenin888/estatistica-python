@@ -125,7 +125,7 @@ Os oráculos matemáticos incluem a tabela de classes [18, 22), [22, 26), [26, 3
 
 ## 6. Entrega e limites
 
-O conjunto de entrega contém código modular, arquivos CSV de exemplo, testes, README.md, este relatório em PDF e sua versão editável em Markdown. docs/CHECKLIST.md relaciona os requisitos do enunciado aos arquivos responsáveis. docs/GITHUB.md descreve a publicação e o acesso do professor ao repositório.
+O projeto é entregue no repositório privado https://github.com/Morenin888/estatistica-python, com código modular, arquivos CSV, testes, README.md e este relatório em PDF e Markdown. docs/CHECKLIST.md relaciona os requisitos; docs/GITHUB.md orienta execução, atualização e concessão de acesso ao professor antes da entrega.
 
 O programa trabalha com números reais finitos em ponto flutuante. Valores fora da capacidade de representação numérica recebem mensagem de erro. A frequência discreta mantém os valores observados, enquanto as classes fornecem aproximações. A convenção de Sturges, a inclusão do máximo e as regras de empate são documentadas para tornar os resultados reproduzíveis.
 

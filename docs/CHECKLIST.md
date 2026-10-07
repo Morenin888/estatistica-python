@@ -23,7 +23,7 @@ Este documento relaciona os requisitos à implementação e aos materiais da ent
 | Clareza na apresentação | Cabeçalhos de três partes, tabelas alinhadas, medidas nomeadas e avisos sobre empates/estimativas |
 | Corretude e casos de fronteira | `tests/test_calculos.py` e `tests/test_entrada_cli.py`; execute `python -m unittest discover -s tests -v` |
 | Relatório breve com arquitetura, tradução das fórmulas e execução | `docs/relatorio.pdf`, com fonte `docs/relatorio.md`; instruções também no README |
-| Entrega: código-fonte no GitHub e relatório em PDF | Código e PDF preparados no projeto; publicação e acesso devem ser conferidos conforme `docs/GITHUB.md` |
+| Entrega: código-fonte no GitHub e relatório em PDF | Repositório criado em [Morenin888/estatistica-python](https://github.com/Morenin888/estatistica-python); código e PDF preparados no projeto; publicação e acesso devem ser conferidos conforme `docs/GITHUB.md` |
 
 ## Convenções matemáticas explícitas
 
@@ -36,8 +36,9 @@ Este documento relaciona os requisitos à implementação e aos materiais da ent
 
 ## Passos finais de submissão
 
-- [ ] Confirmar que os arquivos estão no repositório GitHub da conta escolhida.
-- [ ] Conferir a execução de testes na aba Actions.
+- [x] Repositório criado na conta escolhida: [Morenin888/estatistica-python](https://github.com/Morenin888/estatistica-python), privado.
+- [ ] Confirmar que o código-fonte, exemplos, testes e relatório PDF estão publicados no repositório.
+- [ ] Confirmar a aprovação do workflow de testes na aba Actions para o commit publicado.
 - [ ] Garantir que o professor pode acessar o repositório.
 - [ ] Entregar a URL real do repositório e `docs/relatorio.pdf` até **10 de outubro de 2026**, conforme o enunciado.
 
