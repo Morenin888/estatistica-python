@@ -4,7 +4,7 @@ O repositório do trabalho foi criado na conta **Morenin888**:
 
 <https://github.com/Morenin888/estatistica-python>
 
-Ele é **privado**. O estado da publicação dos arquivos e da verificação do GitHub Actions está registrado no [checklist](CHECKLIST.md). A criação do repositório não confirma, por si só, o envio dos arquivos ou a submissão ao professor.
+Ele é **privado**. O código e o relatório estão publicados, e os testes foram aprovados em Python 3.10, 3.12 e 3.13 no [GitHub Actions](https://github.com/Morenin888/estatistica-python/actions/runs/37558053841). O [checklist](CHECKLIST.md) registra as etapas concluídas e as etapas de acesso do professor e submissão.
 
 ## Baixar e executar
 
@@ -34,7 +34,7 @@ python main.py --csv dados/exemplo.csv
 python -m unittest discover -s tests -v
 ```
 
-Os demais comandos estão no [README](../README.md). O relatório fica em [docs/relatorio.pdf](relatorio.pdf). Pelo navegador, também é possível usar **Code → Download ZIP** na página do repositório, quando os arquivos estiverem publicados e sua conta tiver acesso.
+Os demais comandos estão no [README](../README.md). O relatório fica em [docs/relatorio.pdf](relatorio.pdf). Pelo navegador, também é possível usar **Code → Download ZIP** na página do repositório com uma conta autorizada.
 
 ## Atualizar o projeto
 

@@ -174,6 +174,8 @@ python -m unittest discover -s tests -v
 
 Os testes conferem resultados matemáticos, casos de empate e dados constantes, limites das classes, separatrizes, entrada manual, CSV, erros e a execução da CLI. O workflow do GitHub Actions está configurado para executar a suíte e um exemplo CSV em Python 3.10, 3.12 e 3.13.
 
+Validação realizada: **60 testes aprovados localmente**, com a mesma suíte e o exemplo CSV aprovados nas três versões de Python no [GitHub Actions](https://github.com/Morenin888/estatistica-python/actions/runs/37558053841).
+
 - [Relatório técnico em PDF](docs/relatorio.pdf) e [fonte editável](docs/relatorio.md).
 - [Checklist dos requisitos do enunciado](docs/CHECKLIST.md).
 - [Acesso ao repositório, execução e atualizações no GitHub](docs/GITHUB.md).

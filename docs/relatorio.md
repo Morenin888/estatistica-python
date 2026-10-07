@@ -121,7 +121,7 @@ A verificação automatizada utiliza unittest, da biblioteca padrão. A suíte c
 
 Os oráculos matemáticos incluem a tabela de classes [18, 22), [22, 26), [26, 30), [30, 34], com frequências 32, 45, 28 e 15. Seus resultados corretos são média 24,866667; mediana 24,488889; moda de Czuber 23,733333. Esses valores são calculados pelas fórmulas, pois os números ilustrativos de saída no enunciado não correspondem à tabela apresentada.
 
-**Resultado da verificação:** 60 testes aprovados, sem falhas, em 6 de outubro de 2026. **Ambiente utilizado:** Python 3.12.14. A configuração em .github/workflows/testes.yml prevê executar a suíte no GitHub em outras versões; essa configuração não substitui um resultado observado do serviço.
+**Resultado da verificação:** 60 testes aprovados, sem falhas, em 6 de outubro de 2026. **Ambiente local:** Python 3.12.14. No GitHub Actions, a mesma suíte e o exemplo CSV também foram aprovados em Python 3.10, 3.12 e 3.13.
 
 ## 6. Entrega e limites
 
