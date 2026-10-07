@@ -1,17 +1,19 @@
 # Analisador estatístico em Python
 
-Trabalho de **Probabilidade e Estatística**: aplicação de linha de comando para analisar números digitados ou dados de um arquivo CSV nas três partes exigidas pelo enunciado.
+Trabalho de **Probabilidade e Estatística**. O programa analisa números digitados ou dados de um CSV nas três etapas do enunciado.
 
-Repositório: [Morenin888/estatistica-python](https://github.com/Morenin888/estatistica-python), privado. Para acessá-lo, é necessário usar uma conta autorizada. O professor precisa receber acesso ou o proprietário deve tornar o repositório público, conforme a orientação da disciplina.
+Repositório: [Morenin888/estatistica-python](https://github.com/Morenin888/estatistica-python), privado. O professor precisa ter acesso ou o proprietário deve alterar a visibilidade conforme a orientação da disciplina.
 
-## Integrantes em ordem alfabética
+## Integrantes
+
+Em ordem alfabética:
 
 1. Gabriel Chagas
 2. João Vitor Bertolino
 3. Marcelo Moreno
 4. Marlon
 
-## Arquivos da entrega
+## Arquivos
 
 ```text
 README.md
@@ -19,43 +21,43 @@ main.py
 relatorio_tecnico.pdf
 ```
 
-Todo o programa está em `main.py`, organizado internamente em funções de leitura, validação, cálculo de cada parte e apresentação. Os cálculos permanecem separados da interface. O [relatório técnico em PDF](relatorio_tecnico.pdf) explica a arquitetura, as fórmulas e a execução.
+O código está em `main.py`, com funções pequenas para entrada, cálculo e apresentação. A tabela discreta usa tuplas `(xi, fi, Fi)`; as classes usam dicionários com limites e frequências. O [relatório técnico](relatorio_tecnico.pdf) explica a arquitetura e as fórmulas.
 
-## Executar
+## Execução
 
-É necessário **Python 3.10 ou superior**. O programa usa somente a biblioteca padrão, sem instalação de pacotes externos. Abra o terminal na pasta do projeto:
+Use **Python 3.10 ou superior**. Não é necessário instalar pacotes. Na pasta do projeto, abra o menu:
 
 ```bash
 python main.py
 ```
 
-O menu permite digitar números, carregar CSV ou sair pela opção `0`. Também é possível informar a entrada diretamente:
+Escolha `1` para digitar números, `2` para carregar CSV ou `0` para sair. Também é possível executar diretamente:
 
 ```bash
-python main.py --dados "1,2,2,3,4"
-python main.py --dados "1.5,2.5,3.5"
+python main.py -d "1,2,2,3,4"
+python main.py --data "1.5,2.5,3.5"
 python main.py --dados "1,5;2,5;3,5"
-python main.py --dados=-2,-1,0,1,2
+python main.py --data=-2,-1,0,1,2
 python main.py --help
 ```
 
-Use vírgula para separar números com **ponto decimal**. Para usar **vírgula decimal**, separe os números com ponto e vírgula. Se a lista começar com um número negativo, use `--dados=...`. Em sistemas que usam o comando `python3`, substitua `python` por `python3`.
+`-d`, `--data` e `--dados` são nomes da mesma opção. Use vírgula entre números com ponto decimal; para decimal com vírgula, separe os números com ponto e vírgula. Para listas que começam com número negativo, use `--data=...`. Se necessário, substitua `python` por `python3`.
 
-### Ler um CSV
+### Arquivos CSV
 
-Crie um arquivo de entrada chamado `dados.csv`, por exemplo, com esta linha numérica, sem cabeçalho:
+Crie seu arquivo `dados.csv`. Um exemplo sem cabeçalho é:
 
 ```csv
 1,2,2,3,4
 ```
 
-Execute:
+Leia com:
 
 ```bash
-python main.py --csv dados.csv
+python main.py -f dados.csv
 ```
 
-Para um arquivo com cabeçalho e mais de uma coluna, por exemplo:
+`-f`, `--file` e `--csv` são nomes da mesma opção. Para um CSV com cabeçalho, como:
 
 ```csv
 id,valor
@@ -64,60 +66,49 @@ id,valor
 3,3.5
 ```
 
-Selecione a coluna desejada:
+Selecione a coluna pelo nome ou pelo índice, começando em **1**:
 
 ```bash
-python main.py --csv dados.csv --cabecalho --coluna valor
+python main.py --file dados.csv --cabecalho --coluna valor
 python main.py --csv dados.csv --cabecalho --coluna 2
 ```
 
-O arquivo deve ser UTF-8. O programa detecta vírgula, ponto e vírgula ou tabulação como delimitadores. Decimal com vírgula é aceito quando o delimitador é ponto e vírgula ou tabulação. `--cabecalho` declara explicitamente a primeira linha não vazia como cabeçalho; `--coluna` aceita índice começando em **1** ou nome exato, que exige cabeçalho. Sem seleção de coluna, todas as células de dados devem ser numéricas.
+`--cabecalho` declara explicitamente que a primeira linha não vazia contém os nomes das colunas. Sem `--coluna`, todas as células de dados são lidas como números. A leitura aceita UTF-8 e detecta vírgula, ponto e vírgula ou tabulação; decimal com vírgula exige ponto e vírgula ou tabulação como delimitador.
 
-`--dados` e `--csv` são alternativas; `--coluna` e `--cabecalho` só acompanham `--csv`. Arquivos inexistentes, dados vazios, células vazias, texto, `NaN` e infinito geram mensagens de erro. No menu é possível tentar novamente. Pela linha de comando, a saída é `0` para sucesso, `1` para erro nos dados e `2` para argumentos inválidos.
+Entrada direta e arquivo são alternativas. `--cabecalho` e `--coluna` acompanham somente um arquivo. Arquivos inválidos, campos vazios, texto, `NaN` e infinito geram mensagens de erro; no menu é possível tentar novamente.
 
-## Cálculos e saída
+## Bibliotecas por etapa
 
-Cada entrada válida apresenta as três partes. Nas fórmulas, `n` é o total de observações, `fi` a frequência absoluta e `Fi` a frequência acumulada.
-
-### Uso de bibliotecas por etapa
-
-| Etapa | Restrição do enunciado e implementação |
+| Etapa | Implementação |
 | --- | --- |
-| Parte 1 | Exclusivamente `statistics` para calcular média, mediana e moda, com chamadas diretas a `mean`, `median` e `mode`. |
-| Parte 2 | Algoritmos próprios que calculam as medidas estritamente pela tabela de frequências gerada. |
-| Parte 3 | Fórmulas clássicas implementadas manualmente; proibidas bibliotecas estatísticas ou de análise de dados, como `statistics`, Pandas, NumPy e SciPy. |
+| Parte 1 | Exclusivamente `statistics` para média, mediana e moda, com chamadas diretas a `mean`, `median` e `mode`. |
+| Parte 2 | Algoritmos próprios, calculados estritamente pela tabela de frequências. |
+| Parte 3 | Fórmulas manuais em Python nativo, sem bibliotecas estatísticas ou de análise de dados como `statistics`, Pandas, NumPy e SciPy. |
 
-Os somatórios ponderados das Partes 2 e 3 são implementados manualmente. `math` fornece `log10`/`ceil` para Sturges e verificações numéricas; não calcula as medidas descritivas. `csv`, `io` e `pathlib` cuidam da leitura; `argparse` e `sys`, da CLI; `collections` e `types` apenas organizam os dados e resultados. Esses módulos de apoio não são bibliotecas estatísticas, e o enunciado não os proíbe.
+`statistics` é importado apenas na função da Parte 1. `math` fornece `log10`/`ceil` para Sturges e verificações numéricas. `csv`, `io` e `pathlib` fazem a leitura; `argparse` e `sys` atendem à interface. As medidas das Partes 2 e 3 são calculadas pelas próprias funções do programa.
 
-**Parte 1 — dados não agrupados:** média, mediana e moda calculadas diretamente por `statistics.mean`, `statistics.median` e `statistics.mode`, conforme a restrição do trabalho. Em empate, `statistics.mode` retorna o primeiro dos valores mais frequentes encontrado na entrada.
+## Fórmulas e resultados
 
-**Parte 2 — agrupamento sem intervalos:** tabela de valores únicos `xi` em ordem crescente, com `fi` e `Fi`. Os cálculos usam apenas a tabela:
+Cada entrada válida apresenta as três partes. `n` é o total de observações, `fi` a frequência absoluta e `Fi` a acumulada.
 
-```text
-n = Σ fi
-Fi = soma das frequências até a linha i
-Média = Σ(xi · fi) / n
-Moda(s) = valores com frequência máxima
-Mediana = média dos valores nas posições centrais, localizados por Fi
-```
+**Parte 1:** média, mediana e moda dos dados brutos. Em empate, `statistics.mode` retorna o primeiro dos valores mais frequentes encontrado na entrada.
 
-As posições centrais são `piso((n + 1)/2)` e `piso((n + 2)/2)`. Todas as modas empatadas são apresentadas; se cada valor ocorrer uma vez, o programa informa a ausência de predominância modal.
+**Parte 2:** tabela de valores únicos `xi` ordenados, com `fi` e `Fi`. A média é `Σ(xi·fi)/n`; as modas são os valores de frequência máxima. A mediana localiza, por `Fi`, as posições `piso((n+1)/2)` e `piso((n+2)/2)` e calcula a média entre elas. Se todos os valores ocorrerem uma vez, não há predominância modal.
 
-**Parte 3 — agrupamento com intervalos:** fórmulas em Python nativo, sem `statistics` ou bibliotecas como Pandas, NumPy e SciPy. A tabela mostra intervalo, `fi`, `Fi` e ponto médio:
+**Parte 3:** tabela de intervalos, frequências absolutas e acumuladas. O agrupamento e as medidas usam:
 
 ```text
 k = teto(1 + 3,322 · log10(n))             [Sturges]
-A = máximo − mínimo
-h = A / k
+h = (máximo − mínimo) / k
 mi = (limite inferior + limite superior) / 2
-Média agrupada = Σ(mi · fi) / n
+Média = Σ(mi · fi) / n
 S(p) = L + ((p · n − F_anterior) / f_classe) · h
 Moda de Czuber = L_modal + (d1 / (d1 + d2)) · h
 ```
 
-Na interpolação `S(p)`, a classe é a primeira com frequência positiva cuja acumulada alcança `p·n`; `L` é seu limite inferior. Na moda, `d1 = f_modal − f_anterior` e `d2 = f_modal − f_seguinte`; vizinhos externos têm frequência zero.
+Para `S(p)`, escolhe-se a primeira classe de frequência positiva cuja acumulada alcança `p·n`; `L` é seu limite inferior. Na moda, `d1 = f_modal − f_anterior` e `d2 = f_modal − f_seguinte`; vizinhos externos têm frequência zero.
 
-| Medida de posição | Proporção usada em S(p) |
+| Medida | Proporção p |
 | --- | ---: |
 | Mediana | 0,50 |
 | Q1 e Q3 | 0,25 e 0,75 |
@@ -125,8 +116,10 @@ Na interpolação `S(p)`, a classe é a primeira com frequência positiva cuja a
 | P15 e P22 | 0,15 e 0,22 |
 | P63 e P70 | 0,63 e 0,70 |
 
-As classes são `[Li, Ls)`, com a última fechada para incluir o máximo. Classes vazias são preservadas. Dados constantes geram uma única classe `[v, v]`, com todas as medidas iguais a `v`. Nas demais distribuições, empates entre classes modais são informados; não se afirma uma moda única quando todas as classes têm a mesma frequência ou quando a frequência máxima é `1`. Trechos com `d1 + d2 = 0` não permitem interpolação da moda.
+As classes são `[Li, Ls)`, com a última fechada para incluir o máximo; classes vazias são preservadas. Dados constantes geram uma classe `[v, v]` e todas as medidas iguais a `v`. Nas demais distribuições, empates entre classes modais são informados; frequências uniformes, frequência máxima `1` ou denominador `d1+d2 = 0` impedem afirmar uma moda única.
 
-As medidas agrupadas são estimativas por pontos médios e interpolação, podendo diferir das medidas exatas das Partes 1 e 2. Para conferir uma entrada simples, `1,2,2,3,4` deve produzir média **2,4**, mediana **2** e moda **2** nas Partes 1 e 2. `D7` e `P70` sempre representam a mesma posição na Parte 3.
+As medidas intervalares são estimativas por pontos médios e interpolação. Para conferir uma entrada simples, `1,2,2,3,4` produz média **2,4**, mediana **2** e moda **2** nas Partes 1 e 2. `D7` e `P70` representam a mesma posição na Parte 3.
 
-Referências: [documentação oficial de statistics](https://docs.python.org/3/library/statistics.html) e [material sobre as modas de King e Czuber disponibilizado pela UFSC](https://www.inf.ufsc.br/~marcelo/Moda.PDF).
+Validação local: 61 testes de cálculos, entradas e execução da CLI passaram, incluindo dados constantes, CSV com cabeçalho e as restrições de bibliotecas por etapa.
+
+Referências: [documentação de statistics](https://docs.python.org/3/library/statistics.html) e [material da UFSC sobre as modas de King e Czuber](https://www.inf.ufsc.br/~marcelo/Moda.PDF).
