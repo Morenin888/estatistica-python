@@ -31,6 +31,8 @@ Use **Python 3.10 ou superior**. Não é necessário instalar pacotes. Na pasta 
 python main.py
 ```
 
+Como `main.py` está na raiz do repositório, use esse caminho na configuração de execução do editor. Se o editor também passar `src/main.py` como argumento inicial extra, o programa reconhece esse caminho e continua normalmente.
+
 Escolha `1` para digitar números, `2` para carregar CSV ou `0` para sair. Também é possível executar diretamente:
 
 ```bash
@@ -120,6 +122,6 @@ As classes são `[Li, Ls)`, com a última fechada para incluir o máximo; classe
 
 As medidas intervalares são estimativas por pontos médios e interpolação. Para conferir uma entrada simples, `1,2,2,3,4` produz média **2,4**, mediana **2** e moda **2** nas Partes 1 e 2. `D7` e `P70` representam a mesma posição na Parte 3.
 
-Validação local: 61 testes de cálculos, entradas e execução da CLI passaram, incluindo dados constantes, CSV com cabeçalho e as restrições de bibliotecas por etapa.
+Validação local: 69 testes de cálculos, entradas e execução da CLI passaram, incluindo dados constantes, CSV com cabeçalho, caminhos extras de execução e as restrições de bibliotecas por etapa.
 
 Referências: [documentação de statistics](https://docs.python.org/3/library/statistics.html) e [material da UFSC sobre as modas de King e Czuber](https://www.inf.ufsc.br/~marcelo/Moda.PDF).

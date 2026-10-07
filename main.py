@@ -248,6 +248,9 @@ def menu():
             print(f"Erro: {error}\nRetornando ao menu; verifique os dados.")
 
 def main(argv=None):
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and not argv[0].startswith("-") and Path(argv[0].replace("\\", "/")).name == "main.py":
+        argv = argv[1:]
     parser = argparse.ArgumentParser(description="Analisador estatístico descritivo")
     parser._optionals.title = "Opções"
     group = parser.add_mutually_exclusive_group()
